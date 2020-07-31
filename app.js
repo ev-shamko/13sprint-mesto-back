@@ -2,12 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose'); // ODM пакет для взаимодействия с mongoDB
 const bodyParser = require('body-parser'); // внимание! обязателен! И ниже его app.use -аем дважды
 
-/* ***************************** */
-
 const { PORT = 3000 } = process.env;
 const app = express();
-
-/* ***************************** */
 
 // эти две строчки обязательные. Они собираюют из пакетов объект req.body
 // без них req.body = undefined
@@ -21,6 +17,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
+  useUnifiedTopology: true, // убираем бесячее сообщение в консоли
 });
 
 /* ***************************** */

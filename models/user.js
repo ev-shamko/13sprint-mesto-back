@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     // кастомная валидация ссылки на аватар
     validate: {
       validator: (url) => regExpImgUrl.test(url), // Пришедший url проверяется регуляркой
-      message: 'Вы предоставили неправильный url аватара. Пример корректного url: https://my.site/ava123.jpg',
+      message: (props) => `${props.value} - это некорректный url для аватара. Пример корректного url: https://my.site/ava123.jpg`,
     },
   },
 });

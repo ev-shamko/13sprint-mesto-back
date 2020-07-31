@@ -12,7 +12,7 @@ module.exports.createCard = (req, res) => {
 
   Card.create({ name, link, owner: ownerId })
     .then((cards) => res.send({ data: cards }))
-    .catch((err) => res.status(500).send(err.message));
+    .catch((err) => res.status(400).send({ message: err.message }));
 };
 
 module.exports.deleteCard = (req, res) => {
@@ -23,5 +23,5 @@ module.exports.deleteCard = (req, res) => {
       }
       return res.send({ message: 'Эта карточка успешно удалена:', data: card });
     })
-    .catch((err) => res.status(500).send(err.message));
+    .catch((err) => res.status(500).send({ message: err.message }));
 };
